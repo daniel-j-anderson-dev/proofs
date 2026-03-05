@@ -24,5 +24,5 @@ induction _ baseCase _ Zero = baseCase
 
 -- recursively loop from k all the way to zero checking the prop every step of the way
 -- params: prop, b, inductiveCase all pass through to the next recursive layer without changing
-induction prop b inductiveCase (Successor k) =
-  inductiveCase k (induction prop b inductiveCase k)
+induction proposition baseCase inductiveCase (Successor k) =
+  inductiveCase k (induction proposition baseCase inductiveCase k)
