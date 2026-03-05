@@ -19,8 +19,12 @@ Zero + n = n
 --   For each a in ℕ there exists an element b in ℕ such that a · b = b · a = e , where e is the identity element.
 -- from: https://en.wikipedia.org/wiki/Abelian_group
 
--- Inverse element
+-- wts zero is identity
 public export
 zeroLeftNeutral : (m: Natural) -> Equality (Zero + m) m
 zeroLeftNeutral m = Reflexive
+
+public export
+zeroRightNeutral : (m: Natural) -> Equal (m + Zero) m
+zeroRightNeutral m = Reflexive
 
