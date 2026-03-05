@@ -12,11 +12,11 @@ Zero + n = n
 
 -- Abelian group (ℕ, +, 0)
 -- - Associativitvy:
---   For all a, b, and c in ℕ, the equation (a + b) + c = a + (b + c) holds.
+--   ∀ a, b, c ∈ ℕ, (a + b) + c = a + (b + c)
 -- - Neutral element:
---   There exists an element e in ℕ, such that for all elements a in ℕ, the equation e+a = a+e = a holds.
+--   ∃ 0 ∈ ℕ | ∀ a ∈ ℕ, 0 + a = a + 0 = a
 -- - Inverse element:
---   For each a in ℕ there exists an element b in ℕ such that a + b = b + a = e , where e is the identity element.
+--   ∀ a, ∈ ℕ ∃ a_inv ∈ ℕ | a + a_inv = a_inv + a = 0 where 0 is the neutral element
 -- from: https://en.wikipedia.org/wiki/Abelian_group
 
 -- wts zero is identity --
