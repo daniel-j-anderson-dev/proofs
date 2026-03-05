@@ -29,3 +29,26 @@ zeroRightNeutral (Successor k) =
 public export
 zeroNeutral : ((m: Natural) -> Equality (Zero + m) m, (n : Natural) -> Equality (n + Zero) n)
 zeroNeutral = (zeroLeftNeutral, zeroRightNeutral)
+
+-- ∀ a, b, c, if a, b, c ∈ ℕ then (a + b) + c = a + (b + c)
+public export
+associativity : (a: Natural) -> (b: Natural) -> (c: Natural) -> Equality ((a + b) + c) (a + (b + c))
+
+-- base case a = 0
+-- (0 + b) + c = 0 + (b + c)
+-- because of zero is neutral simplifies to
+-- b + c = b + c
+-- true due to reflexive property of equality
+associativity Zero b c = Reflexive
+
+-- inductive case a = Successor(k)
+-- Need to show: Successor((k + b) + c) = Successor(k + (b + c))
+associativity (Successor k) b c = 
+  let inductiveHypothesis = associativity k b c
+  in Equality.map Successor inductiveHypothesis 
+
+-- associativity =
+--   Natural.induction
+--     (\a => (b: Natural) -> (c: Natural) -> Equality ((a + b) + c) (a + (b + c)))
+--     (\b, c => Reflexive)
+--     (\k, inductiveHypothesis => \b, c => Equality.map Successor (inductiveHypothesis b c))
