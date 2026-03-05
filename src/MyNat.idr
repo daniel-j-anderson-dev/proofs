@@ -31,6 +31,7 @@ zeroLeftNeutral m = Reflexive
 -- wts a + 0 = a
 -- proof by induction:
 -- base case a + 0 = a
+public export
 zeroRightNeutral : (m : Natural) -> Equality (m + Zero) m
 zeroRightNeutral Zero = Reflexive
 zeroRightNeutral (Successor m) = 
