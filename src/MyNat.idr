@@ -2,10 +2,6 @@ module MyNat
 
 import Equality
 
--- (x, y ∈ a, f ∈ a → b) → (x ≡ y → f(x) ≡ f(y))
-congruence : (f: a -> b) -> Equality x y -> Equality (f x) (f y)
-congruence f Reflexive = Reflexive
-
 public export
 data Natural = Zero | Successor Natural
 
