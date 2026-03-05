@@ -11,7 +11,7 @@ Zero + n = n
 (Succesor m) + n = Succesor (m + n)
 
 -- Abelian group (ℕ, +, 0)
--- - Associativitvy:
+-- - Associativity:
 --   ∀ a, b, c ∈ ℕ, (a + b) + c = a + (b + c)
 -- - Neutral element:
 --   ∃ 0 ∈ ℕ | ∀ a ∈ ℕ, 0 + a = a + 0 = a
