@@ -3,12 +3,12 @@ module MyNat
 import Equality
 
 public export
-data Natural = Zero | Succesor Natural
+data Natural = Zero | Successor Natural
 
 public export
 (+) : Natural -> Natural -> Natural
 Zero + n = n 
-(Succesor m) + n = Succesor (m + n)
+(Successor m) + n = Successor (m + n)
 
 -- Abelian group (ℕ, +, 0)
 -- - Associativity:
@@ -28,9 +28,9 @@ zeroLeftNeutral m = Reflexive
 
 -- wts a + e = a
 -- proof by induction:
--- base case a+0 = a
+-- base case a + 0 = a
 public export
 zeroRightNeutral : (m: Natural) -> Equal (m + Zero) m
 zeroRightNeutral Zero = Reflexive
-zeroRightNeutral m = Reflexive
+zeroRightNeutral (Successor ) = Reflexive
 
