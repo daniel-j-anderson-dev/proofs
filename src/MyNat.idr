@@ -24,12 +24,22 @@ public export
 zeroLeftNeutral : (m: Natural) -> Equality (Zero + m) m
 zeroLeftNeutral m = Reflexive
 
--- wts a + 0 = a
+-- wts m + 0 = m
 -- proof by induction:
--- base case a + 0 = a
+-- base case m + 0 = m
 public export
 zeroRightNeutral : (m : Natural) -> Equality (m + Zero) m
 zeroRightNeutral Zero = Reflexive
 zeroRightNeutral (Successor m) = 
   let inductiveHypothesis = zeroRightNeutral m in
   congruence Successor inductiveHypothesis
+
+-- wts m + 0 = m AND 0 + m = m
+-- m + 0 = m AND 0 + m = m
+-- from `zeroLeftNeutral`: m + 0 = m is true
+-- true AND 0 + m = m
+-- from `zeroRNeutral`: 0 + m = m is true
+-- true AND true
+-- true
+zeroNeutral : ((m: Natural) -> Equality (Zero + m) m, (m : Natural) -> Equality (m + Zero) m)
+zeroNeutral = (zeroLeftNeutral, zeroRightNeutral)
