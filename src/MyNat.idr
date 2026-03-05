@@ -2,6 +2,10 @@ module MyNat
 
 import Equality
 
+-- (x, y ∈ a, f ∈ a → b) → (x ≡ y → f(x) ≡ f(y))
+congruence : (f: a -> b) -> Equality x y -> Equality (f x) (f y)
+congruence f Reflexive = Reflexive
+
 public export
 data Natural = Zero | Successor Natural
 
@@ -27,10 +31,8 @@ zeroLeftNeutral m = Reflexive
 -- wts a + 0 = a
 -- proof by induction:
 -- base case a + 0 = a
-public export
-zeroRightNeutral : (m: Natural) -> Equal (m + Zero) m
+zeroRightNeutral : (m : Natural) -> Equality (m + Zero) m
 zeroRightNeutral Zero = Reflexive
-zeroRightNeutral (Successor a) =
-  let inductiveHypothesis = zeroRightNeutral a in
-
-
+zeroRightNeutral (Successor m) = 
+  let inductiveHypothesis = zeroRightNeutral m in
+  congruence Successor inductiveHypothesis
