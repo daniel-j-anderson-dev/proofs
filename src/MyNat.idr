@@ -10,27 +10,27 @@ public export
 Zero + n = n 
 (Successor m) + n = Successor (m + n)
 
--- Abelian group (ℕ, +, 0)
+-- Monoid (ℕ, +, 0)
 -- - Associativity:
 --   ∀ a, b, c ∈ ℕ, (a + b) + c = a + (b + c)
 -- - Neutral element:
---   ∃ 0 ∈ ℕ | ∀ a ∈ ℕ, 0 + a = a + 0 = a
--- - Inverse element:
---   ∀ a, ∈ ℕ ∃ a_inv ∈ ℕ | a + a_inv = a_inv + a = 0 where 0 is the neutral element
+--   ∃ 0 ∈ ℕ | ∀ m ∈ ℕ, 0 + m = m + 0 = m
 -- from: https://en.wikipedia.org/wiki/Abelian_group
 
 -- wts zero is identity --
--- wts e+a = a
+-- wts 0 + m = m
 -- by definition is true
 public export
 zeroLeftNeutral : (m: Natural) -> Equality (Zero + m) m
 zeroLeftNeutral m = Reflexive
 
--- wts a + e = a
+-- wts a + 0 = a
 -- proof by induction:
 -- base case a + 0 = a
 public export
 zeroRightNeutral : (m: Natural) -> Equal (m + Zero) m
 zeroRightNeutral Zero = Reflexive
-zeroRightNeutral (Successor ) = Reflexive
+zeroRightNeutral (Successor a) =
+  let inductiveHypothesis = zeroRightNeutral a in
+
 
