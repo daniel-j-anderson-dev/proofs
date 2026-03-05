@@ -18,15 +18,18 @@ Zero + n = n
 -- from: https://en.wikipedia.org/wiki/Abelian_group
 
 -- wts zero is identity --
--- wts 0 + m = m
--- by definition is true
+-- base case
+-- 0 + m = 0
+-- by definition
 public export
 zeroLeftNeutral : (m: Natural) -> Equality (Zero + m) m
 zeroLeftNeutral m = Reflexive
 
--- wts m + 0 = m
--- proof by induction:
--- base case m + 0 = m
+-- inductive step. Assume the inductive hypothesis for some m
+-- inductive hypothesis is m + 0 = m
+--                           want to show : Successor(m) + 0 = Successor(m)
+-- substitute for the inductive hypothesis: Successor(m + 0) = Successor(m)
+--                                    QED : Successor(m)     = Successor(m)
 public export
 zeroRightNeutral : (m : Natural) -> Equality (m + Zero) m
 zeroRightNeutral Zero = Reflexive
@@ -34,12 +37,6 @@ zeroRightNeutral (Successor m) =
   let inductiveHypothesis = zeroRightNeutral m in
   congruence Successor inductiveHypothesis
 
--- wts m + 0 = m AND 0 + m = m
--- m + 0 = m AND 0 + m = m
--- from `zeroLeftNeutral`: m + 0 = m is true
--- true AND 0 + m = m
--- from `zeroRNeutral`: 0 + m = m is true
--- true AND true
--- true
+public export
 zeroNeutral : ((m: Natural) -> Equality (Zero + m) m, (m : Natural) -> Equality (m + Zero) m)
 zeroNeutral = (zeroLeftNeutral, zeroRightNeutral)
