@@ -1,0 +1,10 @@
+[custom.all.proofs]
+type = "local"
+path = "."
+ipkg = "proofs.ipkg"
+test = "test/test.ipkg"
+
+[custom.all.proofs-test]
+type = "local"
+path = "test"
+ipkg = "test.ipkg"
